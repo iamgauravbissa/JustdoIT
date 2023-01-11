@@ -6,10 +6,10 @@ import { useState } from "react";
 const ToDoListApp =() =>{
 
     const [task, setTask] = useState([
-        {name: "Gaurav", id : 1},
-        {name: "Harish", id : 1},
-        {name: "Gupta", id : 1},
-        {name: "Pawan", id : 1}
+        {name: "Dummy task 1", date : Date.now},
+        {name: "Dummy task 2",  date : Date.now},
+        {name: "Dummy task 3", date : Date.now},
+        {name: "Dummy task 4",  date : Date.now}
     ]);
 
     const deleteTask = (deletedTask) => {
@@ -18,7 +18,7 @@ const ToDoListApp =() =>{
     };
 
     const addNewTask = (newTask) => {
-       const temp = [...task,{name : newTask, id:1}];
+       const temp = [...task,{name : newTask,  date : Date.now}];
        setTask([...temp]);
     }
 

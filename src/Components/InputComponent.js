@@ -2,17 +2,20 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 
 const Input = (props) => {
-    const [inputText , setInputText] = useState();
-    const onAddClick = () =>{
-        props.onClick(inputText);
-        setInputText();
+
+    const [input , setInput] = useState('');
+
+    const addToDo = () => {
+        props.addTask(input);
+        setInput('');
     }
+
     return(
         <div className="flex">
-            <input type='text' placeholder ='Add new todo' value={inputText} className="input" onChange={(e) => setInputText(e.target.value)}></input>
-            <button className="add-btn" onClick={onAddClick}><FaPlus /></button>
+            <input value={input} onChange={(e)=> setInput(e.target.value)} type='text' placeholder ='Add new todo'className="input"></input>
+            <button className="add-btn" onClick={addToDo}><FaPlus /></button>
         </div>
-    )
+    );
 }
 
 export default Input;

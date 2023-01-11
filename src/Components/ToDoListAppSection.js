@@ -5,22 +5,27 @@ import { useState } from "react";
 
 const ToDoListApp =() =>{
 
-    const updateToDos = (inputText)=>{
-            console.log(task);
-            setTask([...task,inputText]);
+    const [task, setTask] = useState([
+        {name: "Gaurav", id : 1},
+        {name: "Harish", id : 1},
+        {name: "Gupta", id : 1},
+        {name: "Pawan", id : 1}
+    ]);
+
+    const deleteTask = (deletedTask) => {
+        const temp = task.filter((item) => {return item.name!==deletedTask});
+        setTask([...temp]);
     };
 
-    const deleteTodo = (name) => {
-        const temp = task.filter(item => item != name);
-        setTask([...temp]);
-
+    const addNewTask = (newTask) => {
+       const temp = [...task,{name : newTask, id:1}];
+       setTask([...temp]);
     }
 
-    const [task, setTask] = useState([]);
     return(
         <>
-        <Input onClick={updateToDos}></Input>
-        {task.map((tasks) =>{ return <ToDo name = {task} deleteTodo={deleteTodo}></ToDo>} )}
+        <Input addTask = {addNewTask}></Input>
+        {task.map((tasks) =>{ return <ToDo task = {tasks} deleteTask={deleteTask}></ToDo>} )}
         </>
     )
 }

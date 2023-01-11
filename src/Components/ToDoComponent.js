@@ -1,9 +1,12 @@
 import {FaTrash} from 'react-icons/fa'
-const ToDo = () => {
+const ToDo = (props) => {
+    const deleteTask = () =>{
+        props.deleteTodo(props.name);
+    }
     return(
         <div className="todos">
-        <p>Task 1 </p>
-        <span className='trash-btn'><FaTrash /></span>
+        <p>{props.name} </p>
+        <span className='trash-btn' onClick={deleteTask}><FaTrash /></span>
         </div>
     )
 }
